@@ -1,6 +1,6 @@
 <script>
 	import Ready from './Ready/Ready.svelte';
-	import Play from './Play/Play.svelte';
+	import Play from './play/Play.svelte';
 	import { getFiveUniqueRandomSubjects } from '$lib/subjects';
 	import { subjectStore } from '$lib/store';
 	import TickOff from './TickOff/TickOff.svelte';
