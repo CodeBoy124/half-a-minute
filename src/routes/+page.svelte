@@ -1,5 +1,5 @@
 <script>
-	import Game from '../components/Game/Game.svelte';
+	import Game from '../components/game/Game.svelte';
 	import TeamsList from '../components/TeamList/TeamsList.svelte';
 
 	let teamsSetup = false;
