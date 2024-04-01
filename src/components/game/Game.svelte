@@ -1,10 +1,9 @@
 <script>
-	import Ready from './r-u-ready/Ready.svelte';
-	import Play from './play/Play.svelte';
+	import Ready from './Ready/Ready.svelte';
+	import Play from './Play/Play.svelte';
 	import { getFiveUniqueRandomSubjects } from '$lib/subjects';
-	import { subjectStore } from '../../store';
-	import TickOff from './tick-off/TickOff.svelte';
-	import { goto } from '$app/navigation';
+	import { subjectStore } from '$lib/store';
+	import TickOff from './TickOff/TickOff.svelte';
 
 	/** @type {string[]} */
 	export let teams;
@@ -15,6 +14,7 @@
 	/** @type {"waitForReady" | "play" | "review"} */
 	let mode = 'waitForReady';
 
+	// progression actions
 	function startPlay() {
 		const subjects = getFiveUniqueRandomSubjects();
 		subjectStore.set(subjects);

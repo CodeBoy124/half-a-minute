@@ -1,76 +1,32 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
-	import { subjectStore } from '../../../store';
+	import SubjectList from './elements/SubjectList.svelte';
 
-	// store the value of subjectStore into subjects
-	/** @type {string[]} */
-	let subjects = [];
-	subjectStore.subscribe((newSubjects) => {
-		subjects = newSubjects;
-	});
+	function gotoReview() {
+		dispatch('next');
+		const audio = new Audio('./ping-contact-cinematic-trailer-sound-effects-124764.mp3');
+		audio.play();
+	}
 
 	// after 30 seconds trigger an event called "next"
-
 	const dispatch = createEventDispatcher();
-	const clrTmout = setTimeout(() => {
-		dispatch('next');
+	const dispatchTimeout = setTimeout(() => {
+		gotoReview();
 	}, 30000);
 
+	// skip
 	function goNext() {
-		clearTimeout(clrTmout);
-		dispatch('next');
+		clearTimeout(dispatchTimeout);
+		gotoReview();
 	}
 </script>
 
 <div>
-	<h2>Hier zijn jouw woorden!</h2>
-	<ul class="list clear-space">
-		{#each subjects as subject}
-			<li class="item clear-space">
-				{subject}
-			</li>
-		{/each}
-	</ul>
+	<h2 class="text-2xl mb-3">Hier zijn jouw woorden!</h2>
+	<SubjectList />
 </div>
 
-<button class="btn" on:click={goNext}>Overslaan</button>
-
-<style>
-	.list {
-		list-style: none;
-		height: fit-content;
-
-		display: flex;
-		flex-direction: column;
-		gap: 20px;
-	}
-
-	.item {
-		height: fit-content;
-		width: 100%;
-
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
-
-		font-size: larger;
-	}
-
-	.clear-space {
-		margin: 0;
-		padding: 0;
-	}
-
-	.btn {
-		transition: background-color 0.2s;
-		background-color: blueviolet;
-		border-radius: 10px;
-		border: none;
-		padding: 10px;
-		color: white;
-		font-size: large;
-	}
-	.btn:active {
-		background-color: rgb(167, 73, 255);
-	}
-</style>
+<button
+	class="transition-colors bg-primary active:bg-card rounded-md border-none p-2 text-white text-lg"
+	on:click={goNext}>Overslaan</button
+>

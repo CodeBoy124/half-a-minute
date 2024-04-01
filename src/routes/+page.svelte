@@ -1,6 +1,6 @@
 <script>
-	import Game from '../components/game/Game.svelte';
-	import TeamsList from '../components/teams/TeamsList.svelte';
+	import Game from '../components/Game/Game.svelte';
+	import TeamsList from '../components/TeamList/TeamsList.svelte';
 
 	let teamsSetup = false;
 
@@ -14,8 +14,12 @@
 	}
 </script>
 
-<div class="app">
-	<div class="container">
+<div
+	class="bg-primary text-white fixed left-0 top-0 w-full h-full p-6 flex justify-center items-center"
+>
+	<div
+		class="w-full h-full max-w-[650px] max-h-[550px] p-2 rounded-lg bg-card-dark flex flex-col justify-between"
+	>
 		{#if !teamsSetup}
 			<TeamsList on:ready={teamsReady} />
 		{:else}
@@ -23,37 +27,3 @@
 		{/if}
 	</div>
 </div>
-
-<style>
-	.app {
-		background-color: blueviolet;
-		color: white;
-
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: calc(100% - 50px);
-		height: calc(100% - 50px);
-		padding: 25px;
-
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.container {
-		width: calc(100% - 30px);
-		height: calc(100% - 30px);
-		max-width: 650px;
-		max-height: 550px;
-
-		padding: 15px;
-
-		border-radius: 15px;
-		background-color: rgb(115, 35, 190);
-
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-</style>

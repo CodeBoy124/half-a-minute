@@ -1,5 +1,5 @@
 <script>
-	import { teamsStore } from '../../store';
+	import { teamsStore } from '$lib/store';
 
 	/** @type {string} */
 	export let team;
