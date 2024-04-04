@@ -13,5 +13,6 @@ export const teamPointsStore = writable({})
 
 export const configStore = writable({
   subjectType: "Random",
-  duration: 30
+  duration: 30,
+  words: 5
 })

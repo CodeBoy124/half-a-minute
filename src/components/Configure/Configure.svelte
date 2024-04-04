@@ -5,12 +5,14 @@
 
 	let selectedSubject = subjects.subjects[0];
 	let time = 30;
+	let subjectsPerRound = 5;
 
 	const dispatch = createEventDispatcher();
 	function ready() {
 		configStore.set({
 			subjectType: selectedSubject,
-			duration: time
+			duration: time,
+			words: subjectsPerRound
 		});
 		dispatch('ready');
 	}
@@ -38,6 +40,15 @@
 			class="bg-primary rounded-md border-card p-2 text-white outline-none text-lg w-3/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
 			type="number"
 			bind:value={time}
+		/>
+	</div>
+
+	<div class="flex flex-col items-center">
+		<h2 class="text-xl mb-2">Woorden per keer</h2>
+		<input
+			class="bg-primary rounded-md border-card p-2 text-white outline-none text-lg w-3/4 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+			type="number"
+			bind:value={subjectsPerRound}
 		/>
 	</div>
 </div>

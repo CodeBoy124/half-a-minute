@@ -1,7 +1,7 @@
 <script>
 	import Ready from './Ready/Ready.svelte';
 	import Play from './play/Play.svelte';
-	import { getFiveUniqueRandomSubjects } from '$lib/subjects';
+	import { getUniqueRandomSubjects } from '$lib/subjects';
 	import { configStore, subjectStore } from '$lib/store';
 	import TickOff from './TickOff/TickOff.svelte';
 
@@ -16,7 +16,8 @@
 
 	let config = {
 		subjectType: 'Random',
-		duration: 30
+		duration: 30,
+		words: 5
 	};
 	configStore.subscribe((newConfig) => {
 		config = newConfig;
@@ -24,7 +25,7 @@
 
 	// progression actions
 	function startPlay() {
-		const subjects = getFiveUniqueRandomSubjects(config.subjectType);
+		const subjects = getUniqueRandomSubjects(config.subjectType, config.words);
 		subjectStore.set(subjects);
 
 		mode = 'play';

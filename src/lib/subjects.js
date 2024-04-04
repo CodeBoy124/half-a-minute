@@ -37,13 +37,12 @@ class SubjectList {
 }
 export const subjects = new SubjectList()
 
-// TODO: Translate subjects
-export function getFiveUniqueRandomSubjects(subject = "All") {
+export function getUniqueRandomSubjects(subject = "All", wordCount = 5) {
   const randomIndex = () => Math.floor(Math.random() * subjects.getSubject(subject).length)
 
   /** @type {number[]} */
   const indexes = []
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < wordCount; i++) {
     let proposedIndex = randomIndex()
     while (indexes.includes(proposedIndex)) {
       proposedIndex = randomIndex()
