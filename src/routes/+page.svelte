@@ -1,16 +1,22 @@
 <script>
+	import Configure from '../components/Configure/Configure.svelte';
 	import Game from '../components/game/Game.svelte';
 	import TeamsList from '../components/TeamList/TeamsList.svelte';
 
-	let teamsSetup = false;
+	/** @type {'config' | 'team' | 'play'} */
+	let mode = 'config';
 
 	/** @type {string[]} */
 	let teams = [];
 
+	function goToTeamsSlide() {
+		mode = 'team';
+	}
+
 	/** @param {CustomEvent<{teams: string[]}>} evt */
 	function teamsReady(evt) {
 		teams = evt.detail.teams;
-		teamsSetup = true;
+		mode = 'play';
 	}
 </script>
 
@@ -20,7 +26,9 @@
 	<div
 		class="w-full h-full max-w-[650px] max-h-[550px] p-2 rounded-lg bg-card-dark flex flex-col justify-between"
 	>
-		{#if !teamsSetup}
+		{#if mode === 'config'}
+			<Configure on:ready={goToTeamsSlide} />
+		{:else if mode === 'team'}
 			<TeamsList on:ready={teamsReady} />
 		{:else}
 			<Game {teams} />

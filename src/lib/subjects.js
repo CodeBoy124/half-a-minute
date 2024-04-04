@@ -1,201 +1,45 @@
-const onderwerpen = [
-  'Albert Einstein',
-  'De Eiffeltoren',
-  'Pinguïn',
-  'Het oude Egypte',
-  'Barack Obama',
-  'Sydney Opera House',
-  'Eenhoorn',
-  'De Tweede Wereldoorlog',
-  'Leonardo da Vinci',
-  'De Grote Muur van China',
-  'Cristiano Ronaldo',
-  'Bollywood',
-  'Panda',
-  'De Franse Revolutie',
-  'Vincent van Gogh',
-  'Mount Everest',
-  'Nelson Mandela',
-  'Het Colosseum',
-  'Haai',
-  'De Amerikaanse Burgeroorlog',
-  'Marie Curie',
-  'Machu Picchu',
-  'Leeuw',
-  'De Renaissance',
-  'Michael Jackson',
-  'Het Vrijheidsbeeld',
-  'Gorilla',
-  'De industriële revolutie',
-  'Isaac Newton',
-  'Het Sydney Opera House',
-  'Olifant',
-  'De Maya-beschaving',
-  'Mozart',
-  'De Taj Mahal',
-  'Zebra',
-  'De Verlichting',
-  'Charles Darwin',
-  'De Brandenburger Tor',
-  'Wolf',
-  'De Russische Revolutie',
-  'Mahatma Gandhi',
-  'Het Kremlin',
-  'Giraffe',
-  'De Roaring Twenties',
-  'Thomas Edison',
-  'Het Pantheon',
-  'Neushoorn',
-  'De Gouden Eeuw van Nederland',
-  'Amelia Earhart',
-  'Het Louvre',
-  'De Vietnamoorlog',
-  'Stephen Hawking',
-  'De Sagrada Familia',
-  'Kangoeroe',
-  'Winston Churchill',
-  'De Hagia Sophia',
-  'Koala',
-  'De Spaanse Inquisitie',
-  'Galileo Galilei',
-  'Het Witte Huis',
-  'De Grote Piramide van Gizeh',
-  'Het Pentagon',
-  'Johannes Gutenberg',
-  'De Big Ben',
-  'Schildpad',
-  'Het Rode Plein',
-  'Octopus',
-  'Alexander de Grote',
-  'De Berlijnse Muur',
-  'Het Empire State Building',
-  'Kameleon',
-  'Het British Museum',
-  'De Eerste Wereldoorlog',
-  'Vleermuis',
-  'Het Alhambra',
-  'Cheeta',
-  'Het Parthenon',
-  'Walrus',
-  'De Toren van Pisa',
-  'Papegaaiduiker',
-  'De Middeleeuwen',
-  "Space Shuttle",
-  "Marie Antoinette",
-  "Galápagos-eilanden",
-  "Vikingen",
-  "Mona Lisa",
-  "Sahara",
-  "Titanic",
-  "Azteken",
-  "Zijderoute",
-  "Great Barrier Reef",
-  "Leonardo DiCaprio",
-  "IJstijd",
-  "Apollo-maanmissies",
-  "Amazoneregenwoud",
-  "Maya-kalender",
-  "Oktoberrevolutie",
-  "Heilige Roomse Rijk",
-  "Grote Depressie",
-  "Guggenheim Museum",
-  "Bosporusbrug",
-  "uitvinding van het wiel",
-  "Kruistochten",
-  "Honderdjarige Oorlog",
-  "uitvinding van de drukpers",
-  "Koude Oorlog",
-  "Verenigde Naties",
-  "Rode Baron",
-  "Grote Hongersnood in Ierland",
-  "IJzeren Gordijn",
-  "ontdekking van penicilline",
-  "uitvinding van de stoommachine",
-  "Franse Revolutie",
-  "uitvinding van de gloeilamp",
-  "Koreaanse Oorlog",
-  "uitvinding van het vliegtuig",
-  "Duitse bezetting van Frankrijk",
-  "val van de Berlijnse Muur",
-  "uitvinding van de telegraaf",
-  "Spaanse Burgeroorlog",
-  "ontdekking van DNA",
-  "uitvinding van het kompas",
-  "Dust Bowl",
-  "Space Race",
-  "Russische Revolutie",
-  "uitvinding van de radio",
-  "uitvinding van de computer",
-  "Slag bij Waterloo",
-  "Reformatie",
-  "uitvinding van de microscoop",
-  "Cubaanse rakettencrisis",
-  "uitvinding van de fotografie",
-  "uitvinding van de televisie",
-  "Amerikaanse Drooglegging",
-  "uitvinding van de luchtballon",
-  "Spaanse Inquisitie",
-  "Vrede van Westfalen",
-  "uitvinding van de radar",
-  "val van Constantinopel",
-  "uitvinding van de benzineauto",
-  "ontdekking van de magnetische noordpool",
-  "uitvinding van de atoombom",
-  "uitvinding van de typemachine",
-  "ontdekking van het Higgs-deeltje",
-  "val van de Sovjet-Unie",
-  "Christendom",
-  "Islam",
-  "Jodendom",
-  "Jehova's getuigen",
-  "Boeddhisme",
-  "Schaken",
-  "Finding Nemo",
-  "De weersvoorspelling bekijken",
-  "Greenpeace",
-  "Farmers Defense Force",
-  "George Washington",
-  "VOC",
-  "uitvinding van het vliegtuig",
-  "De Grinch",
-  "Interpol",
-  "Rijstvelden",
-  "Piercing",
-  "Nepal",
-  "Sydney",
-  "Atlantis",
-  "Julius Caesar",
-  "Democratie",
-  "De eerste kamer",
-  "De tweede kamer",
-  "Mark Rutte",
-  "PVV",
-  "VVD",
-  "GroenLinks",
-  "De toren van babel",
-  "Lintworm",
-  "Jan Smit",
-  "Andre Hazes",
-  "Wesley Sneijder",
-  "Peter R. de Vries",
-  "Chantal Jansen",
-  "Ron Boszhard",
-  "Lego",
-  "ChatGPT",
-  "Netflix",
-  "Microsoft",
-  "Google",
-  "Facebook",
-  "X (twitter)",
-  "Instagram",
-  "Apple",
-  "Ipod",
-  "Airpods",
-  "Samsung"
-]
+import subjectData from '$lib/data.json'
 
-export function getFiveUniqueRandomSubjects() {
-  const randomIndex = () => Math.floor(Math.random() * onderwerpen.length)
+class SubjectList {
+  constructor() {
+    /** @type {{[key: string]: string[]}} */
+    // @ts-ignore
+    this.data = subjectData
+    this.filterOutComments()
+    /** @type {string[]} */
+    this.subjects = Object.keys(this.data)
+  }
+
+  filterOutComments() {
+    // remove all keys that start with a '_'
+    const isComment = (/** @type {string} */ key) => key.startsWith('_')
+
+    const realKeys = Object.keys(this.data)
+      .filter(key => !isComment(key));
+
+    this.data = realKeys.reduce((/** @type {{[key: string]: string[]}} */ acc, key) => {
+      acc[key] = this.data[key]
+      return acc
+    }, {})
+  }
+
+  getSubject(/** @type {string} */ subject) {
+    if (subject !== "All") {
+      return this.data[subject]
+    }
+
+    // combine all subjects into one large array
+    return this.subjects.reduce((/** @type {string[]} */ acc, key) => {
+      acc = acc.concat(this.data[key])
+      return acc
+    }, []);
+  }
+}
+export const subjects = new SubjectList()
+
+// TODO: Translate subjects
+export function getFiveUniqueRandomSubjects(subject = "All") {
+  const randomIndex = () => Math.floor(Math.random() * subjects.getSubject(subject).length)
 
   /** @type {number[]} */
   const indexes = []
@@ -207,5 +51,5 @@ export function getFiveUniqueRandomSubjects() {
     indexes.push(proposedIndex)
   }
 
-  return indexes.map(index => onderwerpen[index])
+  return indexes.map(index => subjects.getSubject(subject)[index])
 }

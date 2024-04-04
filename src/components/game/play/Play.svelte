@@ -2,6 +2,8 @@
 	import { createEventDispatcher } from 'svelte';
 	import SubjectList from './elements/SubjectList.svelte';
 
+	export let duration = 30;
+
 	function gotoReview() {
 		dispatch('next');
 		const audio = new Audio('./ping-contact-cinematic-trailer-sound-effects-124764.mp3');
@@ -12,7 +14,7 @@
 	const dispatch = createEventDispatcher();
 	const dispatchTimeout = setTimeout(() => {
 		gotoReview();
-	}, 30000);
+	}, duration * 1000);
 
 	// skip
 	function goNext() {

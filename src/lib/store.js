@@ -10,3 +10,8 @@ export const subjectStore = writable([])
 // store for team points
 /** @type {import("svelte/store").Writable<{[index: number]: number}>} */
 export const teamPointsStore = writable({})
+
+export const configStore = writable({
+  subjectType: "Random",
+  duration: 30
+})
