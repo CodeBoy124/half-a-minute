@@ -1,6 +1,10 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	import SubjectList from './elements/SubjectList.svelte';
+	import Title from '../../Title/Title.svelte';
+	import Button from '../../Button/Button.svelte';
+	import Card from '../../Card/Card.svelte';
+	import Timer from './elements/Timer.svelte';
 
 	export let duration = 30;
 
@@ -23,12 +27,13 @@
 	}
 </script>
 
-<div>
-	<h2 class="text-2xl mb-3">Hier zijn jouw woorden!</h2>
-	<SubjectList />
-</div>
+<Card>
+	<Timer value={duration} />
 
-<button
-	class="transition-colors bg-primary active:bg-card rounded-md border-none p-2 text-white text-lg"
-	on:click={goNext}>Overslaan</button
->
+	<div class="flex flex-col gap-3">
+		<Title>Omschrijf deze woorden</Title>
+		<SubjectList />
+	</div>
+
+	<Button on:click={goNext} full>Overslaan</Button>
+</Card>

@@ -21,17 +21,13 @@
 </script>
 
 <div
-	class="bg-primary text-white fixed left-0 top-0 w-full h-full p-6 flex justify-center items-center"
+	class="bg-background text-text fixed left-0 top-0 w-full h-full p-6 flex justify-center items-center"
 >
-	<div
-		class="w-full h-full max-w-[650px] max-h-[550px] p-2 rounded-lg bg-card-dark flex flex-col justify-between"
-	>
-		{#if mode === 'config'}
-			<Configure on:ready={goToTeamsSlide} />
-		{:else if mode === 'team'}
-			<TeamsList on:ready={teamsReady} />
-		{:else}
-			<Game {teams} />
-		{/if}
-	</div>
+	{#if mode === 'config'}
+		<Configure on:ready={goToTeamsSlide} />
+	{:else if mode === 'team'}
+		<TeamsList on:ready={teamsReady} />
+	{:else}
+		<Game {teams} />
+	{/if}
 </div>

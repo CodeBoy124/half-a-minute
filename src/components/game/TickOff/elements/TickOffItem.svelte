@@ -1,5 +1,6 @@
 <script>
 	import { teamPointsStore } from '$lib/store';
+	import Label from '../../../Label/Label.svelte';
 
 	/** @type {string} */
 	export let subject;
@@ -31,9 +32,12 @@
 <li
 	class="h-fit w-full flex justify-between items-center {active
 		? 'line-through opacity-100'
-		: 'no-underline opacity-75'}"
+		: 'no-underline opacity-50'}"
 >
-	<button class="bg-transparent border-none text-lg text-white" on:click={switchActive}>
-		{subject}
+	<button on:click={switchActive} class="w-full">
+		<Label>{subject}</Label>
 	</button>
+	<!-- <button class="bg-transparent border-none text-lg text-white" on:click={switchActive}>
+		{subject}
+	</button> -->
 </li>

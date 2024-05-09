@@ -1,4 +1,6 @@
 import subjectData from '$lib/data.json'
+import { get } from 'svelte/store'
+import { configStore } from './store'
 
 class SubjectList {
   constructor() {
@@ -37,12 +39,13 @@ class SubjectList {
 }
 export const subjects = new SubjectList()
 
-export function getUniqueRandomSubjects(subject = "All", wordCount = 5) {
-  const randomIndex = () => Math.floor(Math.random() * subjects.getSubject(subject).length)
+export function getUniqueRandomSubjects() {
+  const { subjectType, words } = get(configStore)
+  const randomIndex = () => Math.floor(Math.random() * subjects.getSubject(subjectType).length)
 
   /** @type {number[]} */
   const indexes = []
-  for (let i = 0; i < wordCount; i++) {
+  for (let i = 0; i < words; i++) {
     let proposedIndex = randomIndex()
     while (indexes.includes(proposedIndex)) {
       proposedIndex = randomIndex()
@@ -50,5 +53,5 @@ export function getUniqueRandomSubjects(subject = "All", wordCount = 5) {
     indexes.push(proposedIndex)
   }
 
-  return indexes.map(index => subjects.getSubject(subject)[index])
+  return indexes.map(index => subjects.getSubject(subjectType)[index])
 }

@@ -14,19 +14,10 @@
 	/** @type {"waitForReady" | "play" | "review"} */
 	let mode = 'waitForReady';
 
-	let config = {
-		subjectType: 'Random',
-		duration: 30,
-		words: 5
-	};
-	configStore.subscribe((newConfig) => {
-		config = newConfig;
-	});
-
 	// progression actions
 	function startPlay() {
-		const subjects = getUniqueRandomSubjects(config.subjectType, config.words);
-		subjectStore.set(subjects);
+		const subjects = getUniqueRandomSubjects();
+		$subjectStore = subjects;
 
 		mode = 'play';
 	}
@@ -49,7 +40,7 @@
 {#if mode == 'waitForReady'}
 	<Ready {currentTeam} on:ready={startPlay} teamNames={teams} />
 {:else if mode == 'play'}
-	<Play on:next={gotoReview} duration={config.duration} />
+	<Play on:next={gotoReview} duration={$configStore.duration} />
 {:else}
 	<TickOff teamId={currentTeamIndex} on:next={startForNextTeam} />
 {/if}

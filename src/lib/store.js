@@ -12,7 +12,7 @@ export const subjectStore = writable([])
 export const teamPointsStore = writable({})
 
 export const configStore = writable({
-  subjectType: "Random",
+  subjectType: "Algemeen",
   duration: 30,
   words: 5
 })

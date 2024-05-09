@@ -1,30 +1,21 @@
 <script>
 	import { teamsStore } from '$lib/store';
+	import Button from '../../Button/Button.svelte';
+	import TextInput from '../../Input/TextInput.svelte';
 
 	let value = '';
 
 	function addTeam() {
 		if (value === '') return;
 
-		teamsStore.update((oldTeam) => [...oldTeam, value]);
+		$teamsStore = [...$teamsStore, value];
 		value = '';
 	}
 </script>
 
-<div class="w-full flex justify-between gap-2">
-	<input
-		class="bg-primary rounded-md border-card p-2 text-white outline-none text-lg w-3/4"
-		type="text"
-		bind:value
-		on:submit={addTeam}
-	/>
-	<button
-		class="transition-colors bg-primary active:bg-card rounded-md border-none p-2 text-white text-lg"
-		on:click={addTeam}>+</button
-	>
-
-	<button
-		class="transition-colors bg-primary active:bg-card rounded-md border-none p-2 text-white text-lg"
-		on:click>Ok</button
-	>
+<div class="w-full flex flex-col gap-5">
+	<TextInput placeholder="Nieuw team..." bind:value on:submit={addTeam} outline={false}>
+		<Button on:click={addTeam} transparent>+</Button>
+	</TextInput>
+	<Button on:click full>Door</Button>
 </div>
