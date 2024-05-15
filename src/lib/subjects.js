@@ -1,6 +1,6 @@
 import subjectData from '$lib/data.json'
 import { get } from 'svelte/store'
-import { configStore } from './store'
+import { configStore, previousWordsStore } from './store'
 
 class SubjectList {
   constructor() {
@@ -39,19 +39,39 @@ class SubjectList {
 }
 export const subjects = new SubjectList()
 
-export function getUniqueRandomSubjects() {
-  const { subjectType, words } = get(configStore)
-  const randomIndex = () => Math.floor(Math.random() * subjects.getSubject(subjectType).length)
+function isANewWord(/** @type {string} */ word) {
+  const previousWords = get(previousWordsStore)
+  return !previousWords.includes(word)
+}
 
-  /** @type {number[]} */
-  const indexes = []
-  for (let i = 0; i < words; i++) {
-    let proposedIndex = randomIndex()
-    while (indexes.includes(proposedIndex)) {
-      proposedIndex = randomIndex()
-    }
-    indexes.push(proposedIndex)
+function getUniqueRandomSubject(/** @type {string} */ subjectType) {
+  const allWords = subjects.getSubject(subjectType);
+  let possibleWords = allWords
+    .filter(isANewWord);
+
+  if (possibleWords.length <= 0) {
+    possibleWords = allWords;
+    previousWordsStore.set([])
   }
 
-  return indexes.map(index => subjects.getSubject(subjectType)[index])
+  const randomWord = possibleWords[Math.floor(Math.random() * possibleWords.length)];
+  previousWordsStore.update(old => [
+    ...old,
+    randomWord
+  ])
+
+  return randomWord;
+}
+
+export function getUniqueRandomSubjects() {
+  console.log(get(previousWordsStore));
+
+  const { subjectType, words: wordCount } = get(configStore);
+
+  /** @type {string[]} */ let wordArr = [];
+  for (let i = 0; i < wordCount; i++) {
+    wordArr.push(getUniqueRandomSubject(subjectType));
+  }
+
+  return wordArr;
 }

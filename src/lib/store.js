@@ -6,6 +6,8 @@ export const teamsStore = writable([])
 
 /** @type {import("svelte/store").Writable<string[]>} */
 export const subjectStore = writable([])
+/** @type {import("svelte/store").Writable<string[]>} */
+export const previousWordsStore = writable([]);
 
 // store for team points
 /** @type {import("svelte/store").Writable<{[index: number]: number}>} */
