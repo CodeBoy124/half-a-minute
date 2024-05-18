@@ -7,7 +7,7 @@ export default {
       border: '#4E5B66',
       btn: '#0B2946',
       card: '#0B1420',
-      green: '76B251',
+      green: '#76B251',
       label: '#060F1A',
       placeholder: '#5C6975',
       red: '#B24444',

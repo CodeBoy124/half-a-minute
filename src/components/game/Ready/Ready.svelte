@@ -32,7 +32,6 @@
 	}
 	$: scores = showScoring();
 
-	// currentTeams includes a '&' or ' en '
 	$: currentTeamIsPlural =
 		currentTeam.includes('&') ||
 		currentTeam.includes(' en ') ||
@@ -40,7 +39,6 @@
 		currentTeam.includes(' plus ');
 </script>
 
-<!-- A container div that will include the two cards -->
 <div class="w-full h-full flex flex-col justify-between gap-6">
 	<Card freescale fit>
 		<Title>Stand van zaken</Title>
@@ -58,10 +56,3 @@
 		<Button on:click={imReady} full>Beginnen</Button>
 	</Card>
 </div>
-
-<!-- Old single card version: -->
-<!-- <div class="w-full h-full flex items-center justify-center flex-col gap-3">
-	<Title>Jij bent, {currentTeam}</Title>
-	<span>{scoringDisplay}</span>
-	<Button on:click={imReady}>Ik ben er klaar voor!</Button>
-</div> -->

@@ -17,13 +17,8 @@
 <Card>
 	<div class="flex flex-col gap-3">
 		<Title>Welke woorden waren geraden?</Title>
-		<!-- <h2 class="text-2xl mb-3">Welke woorden waren geraden?</h2> -->
 		<TickOffList {teamId} />
 	</div>
 
 	<Button on:click={goNext} full>Volgend team</Button>
-	<!-- <button
-		class="transition-colors bg-primary active:bg-card rounded-md border-none p-2 text-white text-lg"
-		on:click={goNext}>Volgend team</button
-	> -->
 </Card>

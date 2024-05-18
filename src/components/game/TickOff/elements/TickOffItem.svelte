@@ -31,13 +31,13 @@
 
 <li
 	class="h-fit w-full flex justify-between items-center {active
-		? 'line-through opacity-100'
-		: 'no-underline opacity-50'}"
+		? 'opacity-100'
+		: 'line-through opacity-50'}"
 >
 	<button on:click={switchActive} class="w-full">
-		<Label>{subject}</Label>
+		<Label isBetween>
+			<p>{subject}</p>
+			<div class="w-2 h-2 rounded-full transition-colors {active ? 'bg-green' : 'bg-red'}"></div>
+		</Label>
 	</button>
-	<!-- <button class="bg-transparent border-none text-lg text-white" on:click={switchActive}>
-		{subject}
-	</button> -->
 </li>
