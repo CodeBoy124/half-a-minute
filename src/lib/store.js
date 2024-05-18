@@ -16,5 +16,6 @@ export const teamPointsStore = writable({})
 export const configStore = writable({
   subjectType: "Algemeen",
   duration: 30,
-  words: 5
+  words: 5,
+  winPoints: 20
 })

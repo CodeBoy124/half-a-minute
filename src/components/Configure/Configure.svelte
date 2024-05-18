@@ -40,6 +40,11 @@
 			<InputTitle>Woorden per keer</InputTitle>
 			<NumberInput bind:value={$configStore.words} />
 		</InputGroup>
+
+		<InputGroup>
+			<InputTitle>Winnend aantal punten</InputTitle>
+			<NumberInput bind:value={$configStore.winPoints} />
+		</InputGroup>
 	</div>
 
 	<Button on:click={ready} full>Volgende</Button>
