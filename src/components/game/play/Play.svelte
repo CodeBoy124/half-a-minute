@@ -30,7 +30,7 @@
 <Card>
 	<Timer value={duration} />
 
-	<div class="flex flex-col gap-3">
+	<div class="flex flex-col gap-3 w-full">
 		<Title>Omschrijf deze woorden</Title>
 		<SubjectList />
 	</div>

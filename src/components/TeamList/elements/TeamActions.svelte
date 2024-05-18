@@ -14,7 +14,7 @@
 </script>
 
 <div class="w-full flex flex-col gap-5">
-	<TextInput placeholder="Nieuw team..." bind:value on:submit={addTeam} outline={false}>
+	<TextInput autofocus placeholder="Nieuw team..." bind:value on:submit={addTeam} outline={false}>
 		<Button on:click={addTeam} transparent>+</Button>
 	</TextInput>
 	<Button on:click full>Door</Button>

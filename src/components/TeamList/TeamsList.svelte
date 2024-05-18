@@ -8,8 +8,7 @@
 	// Dispatch event when the teams are setup
 	let dispatch = createEventDispatcher();
 	function teamsReady() {
-		// TODO: Improve
-		dispatch('ready', { teams: $teamsStore });
+		if ($teamsStore.length > 0) dispatch('ready', { teams: $teamsStore });
 	}
 </script>
 

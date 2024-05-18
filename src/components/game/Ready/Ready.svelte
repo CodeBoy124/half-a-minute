@@ -39,9 +39,9 @@
 		currentTeam.includes(' plus ');
 </script>
 
-<div class="w-full h-full flex flex-col justify-between gap-6">
-	<Card freescale fit>
-		<Title>Stand van zaken</Title>
+<div class="h-full flex-1 w-full max-w-[650px] max-h-[650px] flex flex-col justify-between gap-6">
+	<Card fit>
+		<Title>Scores</Title>
 		<div class="w-full flex flex-col gap-3">
 			{#each scores as score}
 				<div class="flex justify-between items-center">

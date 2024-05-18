@@ -15,7 +15,7 @@
 </script>
 
 <Card>
-	<div class="flex flex-col gap-3">
+	<div class="flex flex-col gap-3 w-full">
 		<Title>Welke woorden waren geraden?</Title>
 		<TickOffList {teamId} />
 	</div>
