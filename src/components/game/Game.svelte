@@ -10,6 +10,7 @@
 	export let teams;
 
 	let currentTeam = teams[0];
+	let startTeam = teams[0];
 	let currentTeamIndex = 0;
 
 	/** @type {"waitForReady" | "play" | "review" | "win"} */
@@ -34,10 +35,10 @@
 		}
 		currentTeam = teams[currentTeamIndex];
 
-		mode =
-			Math.max(...Object.values($teamPointsStore)) >= $configStore.winPoints
-				? 'win'
-				: 'waitForReady';
+		mode = 'waitForReady'
+		if(currentTeam == startTeam && Math.max(...Object.values($teamPointsStore)) >= $configStore.winPoints) {
+			mode = 'win'
+		}
 	}
 </script>
 

@@ -64,8 +64,6 @@ function getUniqueRandomSubject(/** @type {string} */ subjectType) {
 }
 
 export function getUniqueRandomSubjects() {
-  console.log(get(previousWordsStore));
-
   const { subjectType, words: wordCount } = get(configStore);
 
   /** @type {string[]} */ let wordArr = [];

@@ -10,11 +10,14 @@
 
 	function getWinningTeam() {
 		const highestScore = Math.max(...Object.values($teamPointsStore));
+		/** @type {string[]} */
+		let wonTeams = []
 		for (let teamId in $teamPointsStore) {
-			if ($teamPointsStore[teamId] === highestScore) {
-				return teamNames[teamId];
+			if ($teamPointsStore[teamId] == highestScore) {
+				wonTeams.push(teamId)
 			}
 		}
+		return teamNames[parseInt(wonTeams[Math.floor(Math.random()*wonTeams.length)])]
 	}
 
 	$: winTeam = getWinningTeam();
